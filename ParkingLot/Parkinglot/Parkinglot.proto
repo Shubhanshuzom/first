@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package ParkingLot_Main;
+
+option go_package ="example.com/go-Parkinglot-grpc;go_Parkinglot_grpc";
+
+service ParkinigLot {
+    rpc ParkNewCar (CarDetailsInfo) returns (SlotInfo){}
+    rpc ParkingDetails (DetailsInfoParams) returns (CarDetails){}
+    rpc UnparkCar (GetId) returns (CarDetails){}
+}
+
+message CarDetailsInfo {
+    string CarName=1;
+    string CarId=2;
+    string CarColor=3;
+}
+
+message SlotInfo{
+    string CarName=1;
+    string CarId=2;
+    string CarColor=3;
+    int32 Slot=4;
+}
+
+message DetailsInfoParams{
+
+}
+
+message CarDetails{
+    repeated SlotInfo Details=1;
+}
+
+message GetId{
+    string CarId=1;
+}
